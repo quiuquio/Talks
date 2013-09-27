@@ -1,4 +1,4 @@
-Dear reader,
+Dear Visitor,
 
 here you will find the slides for a talk I did for the 
 UNIPG - HKBU exchange program in 2013, about HTML5, CSS,
@@ -12,7 +12,7 @@ which you can navigate.
 In the 'www' folder, you will find the code for the jQuery 
 app I did as an example.
 
-For any questions, do not exitate to contact me!
+For any questions, do not hesitate to contact me!
 	
 	Best regards,
 	Robert Parcus
