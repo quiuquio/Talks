@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>HTML5 and Phonegap</title>
+
+		<meta name="description" content="Talk about mobile development with HTML5, CSS, javascript">
+		<meta name="author" content="Robert Parcus, betoparcus@gmail.com">
+		
+		
+		<script src="js/jsMath/easy/load.js"></script>
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="js/hakimel-revealjs/css/reveal.min.css">
+		<link rel="stylesheet" href="js/hakimel-revealjs/css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="js/hakimel-revealjs/lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="js/hakimel-revealjs/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+		
+		<link rel="stylesheet" href="css/talkStyle.css">
+		
+		<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+		
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+						<h2>
+						</h2>
+				<p>Universit&agrave; degli studi di Perugia</p>
+				<p>
+						<img src="img/Unipg2.png" style="border:0px;">
+						<br>
+					</p>
+				<p style="text-align: center;">
+					<span>Facolta di Scienze Matematiche, Fisiche e Naturali</span>
+					<br><br>
+					<span style="font-size: 16pt;">Robert Parcus - 2013</span>
+				</p>
+				</section>
+				
+				<section>
+					<h2>Phonegap &amp; HTML5 on Android</h2>
+					<br />
+					<h2> Part II</h2>
+				</section>
+				
+				<section>
+					<h2>Some background information</h2>
+					<br />
+					<p>How did we got here?</p>
+				</section>
+				
+				<section>
+					<p>Back in the 90', using HTML, developers were able to show simple web pages.</p>
+					<image class="fragment" src="img/oldweb.jpg"></image>						
+				</section>
+				<section>
+					<p>Soon the "HTML does it all" model became a limitation and new languages, specific to each browser came along</p>
+				</section>
+				<section>
+					<p> 
+						Interaction designers and programmers wanted more control over the <a>behavior</a> and the ability to add <a>functionality</a>.
+						 Visual designers wanted more control over the <a>"look"</a> of the pages.
+					</p>
+				</section>
+				
+				<section>
+					<p>A number of technologies were created to addres this problems.<p>
+					<ul>
+						<li class="fragment"> PICS </li>
+						<li class="fragment"> ActiveX controls </li>
+						<li class="fragment"> HTML 2,3,3.2,...,5 </li>
+						<li class="fragment"> Java applets </li>
+						<li class="fragment"> Flash plug-ins</li>
+						<li class="fragment"> CSS </li>
+						<li class="fragment"> Javascript </li>
+						<li class="fragment"> XHR (AJAX) </li>
+						<li class="fragment"> The Gecko, Webkit and Trident layout engines </li>	
+						<li class="fragment"> and more... a lot more! </li>																
+					</ul>
+				</section>
+				
+				<section>
+					<p> Standards EXISTED but every browser implemented things their own way.</p>
+					<p> 
+						There was also something called "The browser wars", which was similar to today's 
+						mobile OS situation.	
+				  	</p>
+				</section>
+				
+				<section>
+					<p> Today's web development reality is a little better. </p>
+					<p> 
+						Thanks to javascript libraries like jQuery writting for different browser and using
+						advanced interactive functionalities has never been so easy.	
+					</p>
+				</section>
+				
+				<section>
+					<h2>HTML5, CSS and javascript on mobile devices</h2> 
+					<p class="fragment"> What??!?!</p>
+				</section>
+				
+				<section>
+					<p>It is not a secret that every mobile platform uses it's own development languages and rules.</p>
+					<p>
+						If you want your code to <a>run on multiple devices</a>, you're probably going to have to <a>write</a> your <a>code multiple times</a>.
+					</p>
+				</section>
+				<section>
+					<p>One solution could be using the <a>webview</a> functionality which every modern mobile OS ships.</p>
+					<br />
+					<p>This is OK only if our application doesn't need access to the device's capabilities.</p>
+					<p>
+						If those are needed, we can always use an <a>hybrid development model</a>, creating small pieces of native code
+						to access each hardware and using the same HTML code for every platform.  
+					</p>
+				</section>
+				
+				<section>
+					So, why should we care about Java, objective-C and C# if we have HTML5 and phonegap to write and deploy
+					our apps in multiple platforms?
+				</section>
+				
+				<section>
+					<p>1) Native code will always be faster than HTML code.</p>
+					<p>2) Using HTML for webviews is not as straight forward as using it for modern browsers.</p>
+					<p>3) Creating a fluid user interface as those found in native applications using only html and CSS is no easy task.</p>
+					<p>4) We still need to pay attention to some platform specific peculiarities.</p>
+						<br />
+						<p>It's like programming in the 90's again!!!</p>
+				</section>
+				
+				<section>
+					<h2>Time for an example</h2>
+				</section>
+				<section>
+					<p>Have &ltdiv&gt tags of class 'app*' follow mouse movements with jQuery on a normal browser</p>
+					<pre><code data-trim contenteditable>
+$(document).bind('mousemove', function(e){
+	setTimeout(function(){$('.app2').css({
+	   left:  e.pageX ,
+	   top:   e.pageY
+	})}, 50);
+	setTimeout(function(){$('.app3').css({
+	   left:  e.pageX ,
+	   top:   e.pageY
+	})}, 350);
+	setTimeout(function(){$('.app4').css({
+	   left:  e.pageX ,
+	   top:   e.pageY
+	})}, 600);
+});
+					</code></pre>
+				<p>Each &ltdiv&gt movement will be delayed.</p>
+				</section>
+				
+				<section>
+					<iframe src="www/index.html"
+					  allowfullscreen webkitallowfullscreen mozallowfullscreen
+					  width="1000" height="1000" frameborder="0">
+					</iframe>
+				</section>
+				
+				<section>
+					<p>If we try to port this code directly with phonegap, BAD things will happen.</p>
+					<br />
+					<p> 
+						After all, we are writing an application that should work on mobile devices. 
+						The <code>'mousemove'</code> event doesn't even exist here!
+					</p>
+				</section>
+				
+				<section>
+					<pre><code data-trim contenteditable>
+$(document).bind('touchmove', function(e){
+	setTimeout(function(){$('.app2').css({
+	   left:  e.pageX ,
+	   top:   e.pageY
+	})}, 50);
+	setTimeout(function(){$('.app3').css({
+	   left:  e.pageX ,
+	   top:   e.pageY
+	})}, 350);
+	setTimeout(function(){$('.app4').css({
+	   left:  e.pageX ,
+	   top:   e.pageY
+	})}, 600);
+});
+					</code></pre>
+				<p>This should be enough, but our code won't work on real browsers anymore :(</p>
+				</section>
+				<section>
+					<iframe src="www/index_broken.html"
+					  allowfullscreen webkitallowfullscreen mozallowfullscreen
+					  width="1000" height="1000" frameborder="0">
+					</iframe>
+				</section>
+				
+				<section>
+					<p>
+						Truth is that we still need to take care of some little things. For example, there is
+						a 2 years old bug on the android webview that would have prevented our code from working.	
+					</p>
+					<p>
+						For some strange reason, the <code>'touchmove'</code> event is fired only when we start moving
+						in the device's surface, and then it stops, firing again only when we stop moving.
+					</p>
+					<p> BAD! </p>
+					<p class="fragment"> But non impossible to solve.</p>
+				</section>
+				
+				<section>
+					<p>
+						Together with 3 lines of HTML and some CSS, this is all the code needed to have our app
+						running as an hybrid app on mobile devices and on real browsers.	
+					</p>
+					<pre><code data-trim contenteditable>
+$(document).bind('mousemove', function(e){
+	setTimeout(function(){$('.app2').css({
+	   left:  e.pageX ,
+	   top:   e.pageY
+	})}, 50);
+	setTimeout(function(){$('.app3').css({
+	   left:  e.pageX ,
+	   top:   e.pageY
+	})}, 350);
+	setTimeout(function(){$('.app4').css({
+	   left:  e.pageX ,
+	   top:   e.pageY
+	})}, 600);
+});
+
+
+$(document).bind('touchmove', function(e){
+	e.preventDefault();
+	var touch = e.originalEvent.touches[0] ||
+		 e.originalEvent.changedTouches[0];
+	
+	setTimeout(function(){$('.app2').css({
+	   left:  touch.pageX ,
+	   top:   touch.pageY
+	})}, 50);
+	setTimeout(function(){$('.app3').css({
+	   left:  touch.pageX ,
+	   top:   touch.pageY
+	})}, 350);
+	setTimeout(function(){$('.app4').css({
+	   left:  touch.pageX ,
+	   top:   touch.pageY
+	})}, 600);
+});
+					</code></pre>				
+				</section>
+				
+				<section>
+					<p>
+						After loading our project on github, we can go to the phonegap website and build our app using their cloud service.
+					</p>
+				</section>
+				
+				<section>					
+					<iframe src="http://www.phonegap.com"
+					  allowfullscreen webkitallowfullscreen mozallowfullscreen
+					  width="1000" height="1000" frameborder="0">
+					</iframe>
+				</section>
+				
+				<section>
+					<h2>As a conclusion:</h2>
+					<ol>
+						<li>There is no silver bullet, no universal solution for every problem;</li>
+						<li>There is always a right tool for each job;</li>
+						<li>
+							If you dont't like the avaliable tools for what you want to do, try building them youselves. This is
+							what developers have been doind for the last 20 years!
+						</li>
+						<li>Android and Phonegap are an OPEN SOURCE projects and you can contribute to them <a href="https://github.com/phonegap/phonegap" > here</a>
+							and <a href="http://source.android.com/">here</a>;
+						</li>
+					</ol>
+				</section>
+				
+				<section>
+					<h2>Thank you</h2>
+					<p> Robert Parcus - 2013</p>
+					<a href="mailto:betoparcus@gmail.com">betoparcus@gmail.com</a>
+				</section>
+				
+				</div>
+		</div>
+
+		<script src="js/hakimel-revealjs/lib/js/head.min.js"></script>
+		<script src="js/hakimel-revealjs/js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'js/hakimel-revealjs/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'js/hakimel-revealjs/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'js/hakimel-revealjs/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'js/hakimel-revealjs/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'js/hakimel-revealjs/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'js/hakimel-revealjs/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

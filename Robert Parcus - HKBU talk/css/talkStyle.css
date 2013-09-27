@@ -1,0 +1,13 @@
+body{
+font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+}
+
+/*font-family:"Lucida Sans Unicode", "Lucida Grande", Sans-Serif;*/
+#rounded-corner{font-size:19px;width:80%;text-align:left ;border-collapse:collapse;margin:20px;}
+#rounded-corner thead th.rounded-company{background:#b9c9fe url("../img/left.png") left -1px no-repeat;}
+#rounded-corner thead th.rounded-q2{background:#b9c9fe url("../img/right.png") right -1px no-repeat;}
+#rounded-corner th{font-weight:normal;font-size:19px;color:#03C;background:#b9c9fe;padding:8px;text-align:center;}
+#rounded-corner td{background:#e8edff;border-top:1px solid #fff;color:#03F;padding:8px;text-align:center;}
+#rounded-corner tfoot td.rounded-foot-left{background:#e8edff url("../img/botleft.png") left bottom no-repeat;}
+#rounded-corner tfoot td.rounded-foot-right{background:#e8edff url("../img/botright.png") right bottom no-repeat;}
+#rounded-corner tbody tr:hover td{background:#d0dafd;}
