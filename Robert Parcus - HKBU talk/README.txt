@@ -7,7 +7,7 @@ javascript and mobile devices.
 To see the slides, just open the file
 "Phonegap and Html5 on Mobile Devices - Part II.html"
 with your favorite web browser. The slides are like a website
-that you can navigate.
+which you can navigate.
 
 In the 'www' folder, you will find the code for the jQuery 
 app I did as an example.
